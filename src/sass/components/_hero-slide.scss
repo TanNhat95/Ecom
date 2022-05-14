@@ -1,0 +1,201 @@
+.hero-slide{
+    height: 100vh;
+    max-height: 1080px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: calc(#{$header-height} * -1);
+
+    @include tablet{
+        margin-top: calc(#{$header-tablet-height} * -1);
+    }
+    @include mobile{
+        margin-top: calc(#{$header-mobile-height} * -1);
+    }
+
+    &__item{
+        @include flex(center,space-between);
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        @include tablet{
+            flex-direction: column-reverse;
+            padding-top: $header-tablet-height;
+        }
+
+        @include mobile{
+            padding-top: unset;
+            padding-bottom: $header-mobile-height;
+        }
+
+        &.active{
+            opacity: 1;
+            visibility: visible;
+            pointer-events: visible;
+        }
+
+        &__info{
+            width: 58.33%;
+
+            @include tablet{
+                width: 100%;
+                flex: 1;
+            }
+
+            &-title
+            ,&-description{
+                margin-bottom: 60px;
+
+                @include tablet {
+                    margin-bottom: 16px;
+                }
+            }
+
+            &-title{
+                font-weight: 600;
+                font-size: 4rem;
+                line-height: 6rem;
+                overflow: hidden;
+
+                @include mobile{
+                    font-size: 2rem;
+                    line-height: 3rem;
+                }
+            }
+
+            &-description{
+                color: $txt-second-color;
+                font-size: 1.6rem;
+                line-height: 2.4rem;
+                overflow: hidden;
+
+                @include mobile{
+                    font-size: 1rem;
+                    line-height: 1.8rem;
+                }
+            }
+
+            &-button{
+                overflow: hidden;
+            }
+
+            &-title>span,
+            &-description>span,
+            &-button {
+                display: block;
+                transform: translateX(-100%);
+                transition: transform 0.5s ease;
+            }
+
+        }
+
+        &.active &__info{
+            &-title>span,
+            &-description>span,
+            &-button {
+                display: block;
+                transform: translateX(0);
+            }
+        }
+
+        &__image{
+            flex: 1;
+            position: relative;
+            height: 100vh;
+            z-index: 100;
+            pointer-events: none;
+
+            @include tablet{
+                width: 100%;
+                @include flex(center,center);
+                flex: unset;
+                height: 60%;
+                z-index: 98;
+            }
+
+            img{
+                height: 100%;
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                transform: scale(0) rotate(65deg);
+                transition: transform 0.5s cubic-bezier(0.175, 0.85, 0.32, 1.3);
+
+                @include tablet{
+                    height: 100%;
+                    position: relative;
+                }
+            }
+            .shape{
+                $size: 470px;
+                height: $size;
+                width: $size;
+                position: absolute;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%);
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+                transition: border-radius 13s ease;
+                animation : border 10s infinite;
+
+                @include tablet{
+                    $size : 280px;
+                    height: $size;
+                    width: $size;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+                }
+            }
+        }
+
+        &.active &__image{
+            img{
+                transform: scale(1) rotate(0);
+            }
+        }
+
+
+    }
+
+    &__control{
+        @include flex(center,center);
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 4rem;
+
+        &__item ~ &__item{
+            margin-left: 10px;
+        }
+
+        &__item{
+            @include flex(center,center);
+            font-size: 2rem;
+            cursor: pointer;
+
+            &:hover{
+                color: $main-color;
+            }
+
+            .index{
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+}
+
+@keyframes border {
+    0% {
+        border-radius: 58% 42% 40% 60% / 40% 55% 45% 60%;
+    }
+    50% {
+        border-radius: 32% 68% 60% 40% / 28% 24% 76% 72%;
+    }
+    100% {
+        border-radius: 58% 42% 40% 60% / 40% 55% 45% 60%;
+    }  
+}

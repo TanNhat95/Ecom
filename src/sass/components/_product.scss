@@ -1,0 +1,212 @@
+.product{
+    @include flex(flex-start,flex-start);
+
+    @include mobile{
+        flex-direction: column;
+    }
+
+
+    &__images{
+        @include flex(flex-start,flex-start);
+        width: 60%;
+        flex-wrap: wrap;
+
+        @include tablet{
+            width: 80%;
+        }
+
+        @include mobile{
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        &__list{
+            width: 20%;
+
+            &-item {
+                cursor: pointer;
+            }
+        }
+
+        &__main {
+            flex: 1;
+            padding-top: 100%;
+            position: relative;
+
+            img{
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 100%;
+            }
+        }
+    }
+
+    &__info{
+        flex: 1;
+        position: sticky;
+        top: $header-shrink-height;
+        padding-top: 2rem;
+
+        @include mobile{
+            position: relative;
+            top: unset;
+        }
+
+        &__title{
+            font-size: 2.6rem;
+            @include mobile{
+                font-size:1.6rem;
+            }
+        }
+
+        &__item{
+            margin-top: 2rem;
+
+            @include mobile {
+                margin-top: 1rem;
+            }
+
+            &-price{
+                color: $main-color;
+                font-size: 2rem;
+                font-weight: 600;
+            }
+
+            &__title{
+                font-size: 1.4rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+
+
+            }
+
+            &__list{
+                @include flex(center,flex-start);
+
+                &-item{
+                    @include flex(center,center);
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    border: 2px solid $txt-second-color;
+                    cursor: pointer;
+                    margin-right: 1rem;
+
+                    @include mobile{
+                        width: 30px;
+                        height: 30px;
+                    }
+
+                    &.active{
+                        border-color: $main-color;
+                        // border-width: 4px;
+                    }
+
+                    &:hover{
+                        border-color: $main-color;
+                    }
+
+                    .circle{
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+
+                        @include mobile {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                    &-size{
+                        font-size: 1.6rem;
+                        text-transform: uppercase;
+
+                        @include mobile {
+                            font-size: 1.2rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+
+            &__quantity{
+                @include flex(flex-start,flex-start);
+
+                &__button{
+                    @include flex(center,center);
+
+                    width: 30px;
+                    height: 30px;
+                    border: 2px solid $txt-second-color;
+                    font-size: 1.4rem;
+                    cursor: pointer;
+                }
+
+                &__input{
+                    @include flex(center,center);
+                    
+                    width: 90px;
+                    height: 30px;
+                    font-size: 1.4rem;
+                    border-top: 2px solid $txt-second-color;
+                    border-bottom: 2px solid $txt-second-color;
+                }
+            }
+
+            button{
+                margin-right: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    &__description{
+        width: 100%;
+        padding: 2rem;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+
+        @include mobile{
+            display: none;
+        }
+
+        &.mobile{
+            display: none;
+            @include mobile {
+                display:block
+            }
+        }
+
+        
+
+        &.expand{
+            height: max-content;
+        }
+
+        &__title{
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 2rem 0;
+        }
+
+        &__content{
+            font-size: 1.2rem;
+            line-height: 1.8rem;
+            color: $txt-second-color;
+            text-align: justify;
+            margin-bottom: 1rem;
+
+            &-toggle{
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 99;
+            }
+        }
+
+        
+    }
+}
