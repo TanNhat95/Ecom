@@ -7,7 +7,9 @@ import { remove } from '../redux/productModal/productModalSlice.js'
 
 const ProductViewModal = () => {
 
-    const productSlug = useSelector((state)=>state.productModal.value) ;
+    const productSlug = useSelector((state)=>{
+        return state.productModal.value
+    }) ;
     const dispatch = useDispatch();
     const [product,setProduct] = useState(undefined);
 

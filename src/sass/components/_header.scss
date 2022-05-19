@@ -45,6 +45,68 @@
         @include flex(center,space-between);
         height: 100%;
         font-size: 1.4rem;
+        &__item:last-child:hover{
+            &__user{
+                &__control{
+                    display: flex;
+                }
+            }
+        }
+        
+        &__item{    
+            &__link{
+
+            }
+            &__user{
+                @include flex (center,center);
+                &-image{
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    border: solid 2px $main-color ;
+                    margin-right: 0.6rem;
+                }
+                &-username{
+                    font-size: 1.4rem;
+                }
+
+                &__control{
+                    @include flex(center,center);
+                    // flex-direction: column;
+                    flex-wrap: wrap;
+                    background-color: rgba(0,0,0,0.03);
+                    position: absolute;
+                    right: 0;
+                    top: 100%;
+                    display: none;
+                    min-width: 150px;
+
+                    &-item{
+                        font-size: 1.2rem;
+                        padding: 0.4rem;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    &-item:hover{
+                        color: $main-color;
+                    }
+                    &-item:last-child{
+                        // padding-top: unset;
+                    }
+                    &-item:hover{
+                        color: $main-color;
+                        background-color: rgba(0,0,0,0.05);
+                    }
+                }
+            }
+        }
+        &__item:last-child:hover{
+            >div{
+                display: flex;
+            }
+             
+                
+        }
         
         &__item ~ &__item{
             margin-left: 40px;
@@ -60,9 +122,7 @@
             font-weight: 600;
             color: $main-color;
         }
-        &__item:hover{
-            color: $main-color;
-        }
+        
 
         &__left,
         &__right{
@@ -74,6 +134,9 @@
 
             &-item{
                 @include flex(center,center);
+            }
+            &-item:last-child{
+                position: relative;
             }
 
 

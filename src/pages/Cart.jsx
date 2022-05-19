@@ -13,7 +13,10 @@ import CartItem from '../components/CartItem.jsx'
 const Cart = () => {
 
   const navigate = useNavigate();
-  const cartItems = useSelector((state)=>state.cartItems.value)
+
+  const cartItems = useSelector((state)=>{
+    return state.cartItems.value
+  })
 
   const [cartProducts,setCartProducts] = useState([])
 

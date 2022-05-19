@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import logo from '../assets/images/Logo-2.png'
+import React, { useEffect, useRef, useState } from 'react'
+import { Link, useLocation , NavLink , Navigate, useNavigate } from 'react-router-dom'
+import logo from '../assets/images/Logo-2.png';
+import product_12_image_01 from '../assets/images/products/product-12(1).jpg'
 
 const mainNav = [
   {
@@ -13,11 +14,11 @@ const mainNav = [
   },
   {
     display: "Phụ kiện",
-    path: "/accessories"
+    path: "/"
   },
   {
     display: "Liên hệ",
-    path: "/contact"
+    path: "/"
   }
 ]
 
@@ -25,9 +26,11 @@ const Header = () => {
 
   //useLocation ********
   const{pathname} = useLocation();
+  const navigate = useNavigate();
   const activeNav = mainNav.findIndex(e=>e.path===pathname);
-
+  const [haveLogin,setHaveLogin] = useState(true)
   const headerRef = useRef(null);
+
   useEffect(() => {
     window.addEventListener("scroll",()=>{
       if(document.documentElement.scrollTop >80 || document.body.scrollTop >80){
@@ -42,9 +45,20 @@ const Header = () => {
     }
   }, [])
 
+
   const menuLeft = useRef(null);
   const menuLeftToggle = () => menuLeft.current.classList.toggle('active');
-  
+  const handleLogout = () => localStorage.setItem('login',null);
+  // const checkLogin = () => {
+  //   setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
+  //   console.log(haveLogin)
+  // }
+  const checkLogin = JSON.parse(localStorage.getItem('login'))
+  useEffect(()=>{
+    setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
+    console.log('chạy')
+  },[checkLogin])
+ 
   return (
     <div className='header' ref={headerRef}>
       <div className="container">
@@ -88,8 +102,34 @@ const Header = () => {
               </Link>
             </div>
             <div className="header__menu__right-item header__menu__item">
-              <i className="bx bx-user"></i>
+              <Link 
+                // onClick={checkLogin}
+                to={`/${window.location.href.split('/').pop()}`}
+                state={haveLogin}
+                className="header__menu__item__link"
+              >
+                {JSON.parse(localStorage.getItem('login'))?<div className="header__menu__item__user">
+                  <img src={product_12_image_01} alt="" className='header__menu__item__user-image'/>
+                  <span className='header__menu__item__user-username'>{JSON.parse(localStorage.getItem('login'))}</span>
+                </div>:  <i className="bx bx-user"></i> }       
+              </Link>
+              {JSON.parse(localStorage.getItem('login'))?
+                <div className="header__menu__item__user__control">
+                    <div className="header__menu__item__user__control-item">
+                      Đổi mật khẩu
+                    </div>
+                    <div className="header__menu__item__user__control-item">
+                    <Link 
+                      to={`/${window.location.href.split('/').pop()}`}
+                      onClick={handleLogout}
+                      >
+                        Đăng xuất
+                    </Link>
+                    </div>
+                </div>:''
+              }
             </div>
+
           </div>
 
         </div>

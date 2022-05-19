@@ -5,6 +5,6 @@ import  cartItemsSlice  from "./shopping-cart/cartItemSlice.js";
 export const store = configureStore({
     reducer:{
         productModal: productModalSlice,
-        cartItems : cartItemsSlice
+        cartItems : cartItemsSlice,
     }
 })
