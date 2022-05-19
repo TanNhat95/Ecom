@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation , NavLink , Navigate, useNavigate } from 'react-router-dom'
+
+import { refreshCart } from '../redux/shopping-cart/cartItemSlice';
+
 import logo from '../assets/images/Logo-2.png';
 import product_12_image_01 from '../assets/images/products/product-12(1).jpg'
 
@@ -45,10 +48,12 @@ const Header = () => {
     }
   }, [])
 
-
   const menuLeft = useRef(null);
   const menuLeftToggle = () => menuLeft.current.classList.toggle('active');
-  const handleLogout = () => localStorage.setItem('login',null);
+  const handleLogout = () => {
+    localStorage.setItem('login',null);
+    window.location.reload();
+  }
   // const checkLogin = () => {
   //   setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
   //   console.log(haveLogin)

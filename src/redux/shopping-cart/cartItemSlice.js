@@ -92,6 +92,9 @@ export const cartItemsSlice = createSlice({
 
               localStorage.setItem('login',JSON.stringify(sessionToken))
               state.value = JSON.parse(localStorage.getItem(sessionToken))
+        },
+        refreshCart:(state)=>{
+            state.value = null;
         }
     }
     
@@ -112,5 +115,5 @@ const deleteItem = (arr,item) => arr.filter(
 
 const sortItems = arr => arr.sort((a, b) => a.id - b.id)
 
-export const { addItem ,updateItem , delItem ,getItemUser } = cartItemsSlice.actions
+export const { addItem ,updateItem , delItem ,getItemUser,refreshCart } = cartItemsSlice.actions
 export default cartItemsSlice.reducer
