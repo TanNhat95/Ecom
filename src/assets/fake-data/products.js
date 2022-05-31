@@ -249,16 +249,18 @@ const getProductBySlug = (slug) => products.find(e => e.slug === slug)
 
 const getCartItemsInfo = (cartItems) => {
     let res = []
-    if (cartItems.length > 0) {
-        cartItems.forEach(e => {
-            let product = getProductBySlug(e.slug)
-            res.push({
-                ...e,
-                product: product
+    if(cartItems){
+        if (cartItems.length > 0) {
+            cartItems.forEach(e => {
+                let product = getProductBySlug(e.slug)
+                res.push({
+                    ...e,
+                    product: product
+                })
             })
-        })
+        }
+        return res.sort((a, b) => b.id-a.id)
     }
-    return res.sort((a, b) => b.id-a.id)
 }
 
 const getProductBySearch = (value) => {

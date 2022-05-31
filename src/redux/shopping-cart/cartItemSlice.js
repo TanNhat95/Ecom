@@ -2,8 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 localStorage.setItem('login',null)
 const sessionToken = JSON.parse(localStorage.getItem('login'));
-const items = localStorage.getItem(sessionToken) !==null ? 
-    JSON.parse(localStorage.getItem(sessionToken)) : [];
+const items =  null;
+
+
 
 
 const initialState = {value:items};
@@ -13,28 +14,32 @@ export const cartItemsSlice = createSlice({
     initialState,
     reducers: {
         addItem: (state,action) =>{
-            const newItem = action.payload
-            const duplicate = findItem(state.value,newItem)
+            const newItem = action.payload;
             const sessionToken = JSON.parse(localStorage.getItem('login'))
             if(sessionToken){
-                if(duplicate.length>0) {
-                    state.value = deleteItem(state.value,newItem)
-                    
-    
-                    state.value = [...state.value,{
-                        ...newItem,
-                        id: duplicate[0].id,
-                        quantity: newItem.quantity + duplicate[0].quantity
-                    }]
-                console.log(`quantity dup : ${duplicate[0].quantity} ,quantity new :  ${newItem.quantity}`)
-    
-                }else{    
-                    state.value = [...state.value,{
-                        ...newItem,
-                        id: state.value.length > 0 ? state.value[state.value.length - 1].id + 1 : 1
-                    }]
+                if((JSON.parse(localStorage.getItem(sessionToken))) ===null){
+                    state.value = new Array({...action.payload,id:1});
+                    const initArr = new Array({...action.payload,id:1});
+                    localStorage.setItem(sessionToken,JSON.stringify(initArr))
+                }else{
+                    const duplicate = findItem(state.value,newItem)
+                    if(duplicate.length>0) {
+                        state.value = deleteItem(state.value,newItem)
+                        state.value = [...state.value,{
+                            ...newItem,
+                            id: duplicate[0].id,
+                            quantity: newItem.quantity + duplicate[0].quantity
+                        }]
+                    console.log(`quantity dup : ${duplicate[0].quantity} ,quantity new :  ${newItem.quantity}`)
+        
+                    }else{
+                        state.value = [...state.value,{
+                            ...newItem,
+                            id: state.value.length > 0 ? state.value[state.value.length - 1].id +1 : 1
+                        }]
+                    }
+                    localStorage.setItem(sessionToken,JSON.stringify(sortItems(state.value)))
                 }
-                localStorage.setItem(sessionToken,JSON.stringify(sortItems(state.value)))
             }  
         },
 
@@ -91,7 +96,10 @@ export const cartItemsSlice = createSlice({
               /**login */
 
               localStorage.setItem('login',JSON.stringify(sessionToken))
-              state.value = JSON.parse(localStorage.getItem(sessionToken))
+              if(JSON.parse(localStorage.getItem(sessionToken))){
+                  state.value = JSON.parse(localStorage.getItem(sessionToken))
+              }else
+                state.value = null;
         },
         refreshCart:(state)=>{
             state.value = null;

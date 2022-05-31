@@ -9,7 +9,6 @@ export const productModalSlice = createSlice({
     initialState,
     reducers:{
         set:(state,action) =>{
-            console.log(action.payload)
             state.value = action.payload
         },
         remove: state =>{

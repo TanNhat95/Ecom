@@ -25,10 +25,12 @@ const Cart = () => {
   const [totalPrice,setTotalPrice] = useState(0)
 
   useEffect(() => {
-    setCartProducts(productData.getCartItemsInfo(cartItems));
-    // setCartProducts(productData.getProductBySearch('Áo'))
-    setTotalProducts(cartItems.reduce((total,item)=>total + Number(item.quantity),0));
-    setTotalPrice(cartItems.reduce((total,item)=>total + (Number(item.quantity)*Number(item.price)),0))
+    if(cartItems){
+      setCartProducts(productData.getCartItemsInfo(cartItems));
+      // setCartProducts(productData.getProductBySearch('Áo'))
+      setTotalProducts(cartItems.reduce((total,item)=>total + Number(item.quantity),0));
+      setTotalPrice(cartItems.reduce((total,item)=>total + (Number(item.quantity)*Number(item.price)),0))
+    }
   }, [cartItems])
   
   return (

@@ -61,7 +61,6 @@ const Header = () => {
   const checkLogin = JSON.parse(localStorage.getItem('login'))
   useEffect(()=>{
     setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
-    console.log('chạy')
   },[checkLogin])
  
   return (
