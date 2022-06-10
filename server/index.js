@@ -1,7 +1,22 @@
 const express = require('express');
 const path = require('path');
+const dotenv = require('dotenv').config();
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+const cookieParse = require('cookie-parser');
+const authenRoute = require('../backend/routes/authen.js')
 
 const app = express();
+app.use(cookieParse());
+app.use(express.json());
+
+
+mongoose.connect(process.env.MONGODB_URL,()=>{
+    console.log("Connect to MongoDB")
+})
+
+
+
 
 const buildDir = path.join(__dirname, '../build');
 console.log('Using files in ' + buildDir);
@@ -29,7 +44,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(buildDir, 'index.html'));
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port);
+app.use("/authen",authenRoute)
 
-console.log('React.JS App is running on the port ' + port);
+app.listen(3000,()=>{
+    console.log("Server running port 3000")
+})
