@@ -44,7 +44,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(buildDir, 'index.html'));
 });
 
-app.use("/authen",authenRoute)
+app.use("/",authenRoute)
 
 app.listen(3000,()=>{
     console.log("Server running port 3000")

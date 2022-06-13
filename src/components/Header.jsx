@@ -5,6 +5,7 @@ import { refreshCart } from '../redux/shopping-cart/cartItemSlice';
 
 import logo from '../assets/images/Logo-2.png';
 import product_12_image_01 from '../assets/images/products/product-12(1).jpg'
+import { useSelector } from 'react-redux';
 
 const mainNav = [
   {
@@ -25,6 +26,7 @@ const mainNav = [
   }
 ]
 
+
 const Header = () => {
 
   //useLocation ********
@@ -33,7 +35,7 @@ const Header = () => {
   const activeNav = mainNav.findIndex(e=>e.path===pathname);
   const [haveLogin,setHaveLogin] = useState(true)
   const headerRef = useRef(null);
-
+  const user = useSelector(state=>state.authen.login.currentUser)
   useEffect(() => {
     window.addEventListener("scroll",()=>{
       if(document.documentElement.scrollTop >80 || document.body.scrollTop >80){
@@ -58,10 +60,9 @@ const Header = () => {
   //   setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
   //   console.log(haveLogin)
   // }
-  const checkLogin = JSON.parse(localStorage.getItem('login'))
   useEffect(()=>{
-    setHaveLogin(JSON.parse(localStorage.getItem('login')) !== null ? false : true)
-  },[checkLogin])
+    setHaveLogin(user !== null ? false : true)
+  },[user])
  
   return (
     <div className='header' ref={headerRef}>
@@ -108,16 +109,17 @@ const Header = () => {
             <div className="header__menu__right-item header__menu__item">
               <Link 
                 // onClick={checkLogin}
-                to={`/${window.location.href.split('/').pop()}`}
+                // to={`/${window.location.href.split('/').pop()}`}
+                to={'/'}
                 state={haveLogin}
                 className="header__menu__item__link"
               >
-                {JSON.parse(localStorage.getItem('login'))?<div className="header__menu__item__user">
+                {user?<div className="header__menu__item__user">
                   <img src={product_12_image_01} alt="" className='header__menu__item__user-image'/>
-                  <span className='header__menu__item__user-username'>{JSON.parse(localStorage.getItem('login'))}</span>
+                  <span className='header__menu__item__user-username'>{user.username}</span>
                 </div>:  <i className="bx bx-user"></i> }       
               </Link>
-              {JSON.parse(localStorage.getItem('login'))?
+              {user?
                 <div className="header__menu__item__user__control">
                     <div className="header__menu__item__user__control-item">
                       Đổi mật khẩu

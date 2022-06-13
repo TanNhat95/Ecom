@@ -10,7 +10,7 @@ const authenController = {
             admin:user.admin
         },
             process.env.JWT_ACCESS_KEY,
-            {expiresIn: "20s"}
+            {expiresIn: "1d"}
         );
     },
     createRefreshToken:(user)=>{
@@ -24,7 +24,6 @@ const authenController = {
     },
     registerUser: async(req,res)=>{
         try {
-            console.log(req.body)
             const salt = await bcrypt.genSalt(10);
             const hashed = await bcrypt.hash(req.body.password,salt);
             //create user
@@ -66,7 +65,7 @@ const authenController = {
                 res.json({...others,accessToken})
             }
         } catch (err) {
-            console.error(err)
+            res.json(err)
         }
     },
     refreshToken: async(req,res)=>{
