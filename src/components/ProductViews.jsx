@@ -1,6 +1,6 @@
 import React, { useState , useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch ,useSelector } from 'react-redux'
 
 import { addItem } from '../redux/shopping-cart/cartItemSlice.js'
 import PropTypes from 'prop-types'
@@ -26,6 +26,8 @@ const ProductViews = props => {
     const [color,setColor] = useState(undefined);
     const [size,setSize] = useState(undefined);
     const [quantity,setQuantity] = useState(1);
+    const [infoUser,setInfoUser] = useState(undefined);
+    const user = useSelector(state=>state.authen.login?.currentUser);
 
     const minusQuantiy = () => {
         if(quantity!==1)
@@ -45,6 +47,11 @@ const ProductViews = props => {
         setQuantity(1);
         setPreviewImg(product.image01);
     }, [product])
+
+    useEffect(() => {
+        setInfoUser(user)
+    }, [user])
+    
     
     const checkCart = () => {
         if(color===undefined){
@@ -67,8 +74,9 @@ const ProductViews = props => {
                 size : size,
                 quantity: quantity,
                 slug : product.slug,
-                title: product.title
-            }))
+                title: product.title,
+                user : infoUser,
+            },))
             alert('Đã thêm vào giỏ hàng')
         }
         

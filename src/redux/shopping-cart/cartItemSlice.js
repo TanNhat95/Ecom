@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-localStorage.setItem('login',null)
-const sessionToken = JSON.parse(localStorage.getItem('login'));
+import { useSelector } from 'react-redux'
+localStorage.setItem('login',null);
 const items =  null;
 
 
@@ -10,6 +9,7 @@ const items =  null;
 const initialState = {value:items};
 
 export const cartItemsSlice = createSlice({
+
     name : 'cartItems', 
     initialState,
     reducers: {
@@ -30,7 +30,6 @@ export const cartItemsSlice = createSlice({
                             id: duplicate[0].id,
                             quantity: newItem.quantity + duplicate[0].quantity
                         }]
-                    console.log(`quantity dup : ${duplicate[0].quantity} ,quantity new :  ${newItem.quantity}`)
         
                     }else{
                         state.value = [...state.value,{
@@ -68,36 +67,36 @@ export const cartItemsSlice = createSlice({
             }  
         },
         getItemUser:(state,action)=>{
-            /** register */
-            const {email,sessionToken} = action.payload;
-            const tokens = [];
-            let newTokens=[];
-            if(localStorage.getItem('listToken')){
-                newTokens = JSON.parse(localStorage.getItem('listToken'));
-            }
-            localStorage.setItem('listToken',JSON.stringify(tokens))
-            for (var i = 0; i < localStorage.length; i++) {
-                if(localStorage.key(i)==='listToken'){
-                    if(JSON.parse(localStorage.getItem('listToken'))[0]===undefined){
-                        localStorage.setItem('listToken',JSON.stringify([sessionToken]))   
-                    }
-                    if(newTokens.length!==0){
-                        if(!newTokens.includes(sessionToken))
-                            newTokens.push(sessionToken);
-                    }
-                    if(newTokens.length===0){
-                        newTokens.push(sessionToken);
-                    }
-                    localStorage.setItem('listToken',JSON.stringify(newTokens))
-                }
-              }
-              /**end register */
+            const userName = action.payload;
+            // const tokens = [];
+            // let newTokens=[];
+            // if(localStorage.getItem('listToken')){
+            //     newTokens = JSON.parse(localStorage.getItem('listToken')).filter(x=>x===userName);
+            //     if(newTokens.length===0){
 
-              /**login */
-
-              localStorage.setItem('login',JSON.stringify(sessionToken))
-              if(JSON.parse(localStorage.getItem(sessionToken))){
-                  state.value = JSON.parse(localStorage.getItem(sessionToken))
+            //     }
+            // }else{
+            //     localStorage.setItem('listToken',JSON.stringify(tokens))
+            //         for (var i = 0; i < localStorage.length; i++) {
+            //             if(localStorage.key(i)==='listToken'){
+            //                 if(JSON.parse(localStorage.getItem('listToken'))[0]===undefined){
+            //                     localStorage.setItem('listToken',JSON.stringify([userName]))   
+            //                 }
+            //                 if(newTokens.length!==0){
+            //                     if(!newTokens.includes(userName))
+            //                         newTokens.push(userName);
+            //                 }
+            //                 if(newTokens.length===0){
+            //                     newTokens.push(userName);
+            //                 }
+            //                 localStorage.setItem('listToken',JSON.stringify(newTokens))
+            //             }
+            //           }
+            // }
+              localStorage.setItem('login',JSON.stringify(userName))
+              if(JSON.parse(localStorage.getItem(userName))){
+                  console.log(JSON.parse(localStorage.getItem(userName)))
+                  state.value = JSON.parse(localStorage.getItem(userName))
               }else
                 state.value = null;
         },

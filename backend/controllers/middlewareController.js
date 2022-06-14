@@ -17,8 +17,9 @@ const middlewareController = {
             return res.status(401).json("You're not authenticated")
         }
     },
-    verifyTokeAndAdmin: (req,res,next)=>{
+    verifyTokeAndAdmin: (req,res,next)=>{   
         middlewareController.verifyToken(req,res,()=>{
+            console.log(req.user)
             if(req.user.id ===req.params.id || req.user.admin){
                 next();
             }else{

@@ -10,8 +10,19 @@ import banner from '../assets/images/banner.png'
 import Grid from '../components/Grid.jsx'
 import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard.jsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getAllUser } from '../redux/apiRequest.js'
 
 const Home = () => {
+
+  const user = useSelector(state=>state.authen.login?.currentUser);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getAllUser(user?.accessToken,dispatch);
+  }, [user])
+  
   return (
     
     <Title title='Trang chủ'>

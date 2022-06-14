@@ -32,7 +32,8 @@ const User = props => {
     const userForm = useRef();
     const userFormRegister = useRef();
     const { register, formState: { errors }, handleSubmit ,clearErrors ,reset } = useForm();
-    const error =   useSelector((state)=>state.authen.login.error)
+    const error =   useSelector((state)=>state.authen.login.error);
+    const user = useSelector(state=>state.authen.login.currentUser);
     
 
     useEffect(() => {
@@ -63,7 +64,7 @@ const User = props => {
             userFormRegister.current.reset();
             setRegisterShow(!registerShow);
         }
-        
+
         // if(data!==undefined){
         //     const match = users.filter(e=>e&&e.email===data.email&&e.password===data.password)
         //     if(match.length!==0){
@@ -93,7 +94,11 @@ const User = props => {
         reset();
     }
     const isError = Object.keys(errors).length!==0||invalid;
-
+    useEffect(() => {
+        dispatch(getItemUser(user?.username));
+        navigate(`/${window.location.href.split('/').pop()}`);
+    }, [user])
+    
   return (
     <div className={`product-view__modal ${myState.state?'active':''}`} ref={userRef}>
         {!registerShow&&<div className="product-view__modal__content user-view">

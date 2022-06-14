@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const cookieParse = require('cookie-parser');
-const authenRoute = require('../backend/routes/authen.js')
+const authenRoute = require('../backend/routes/authen.js');
 
 const app = express();
 app.use(cookieParse());
@@ -35,6 +35,7 @@ if (logRequests) {
 }
 
 // Serve the static files from the React app
+app.use("/",authenRoute);
 app.use(subDir, express.static(buildDir));
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
@@ -44,7 +45,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(buildDir, 'index.html'));
 });
 
-app.use("/",authenRoute)
 
 app.listen(3000,()=>{
     console.log("Server running port 3000")
