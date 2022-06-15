@@ -60,6 +60,7 @@ const User = props => {
         if(!registerShow){
             loginUser(userLogin,dispatch,navigate);             
         }else{
+            console.log(newUser)
             registerUser(newUser,dispatch,navigate);
             userFormRegister.current.reset();
             setRegisterShow(!registerShow);

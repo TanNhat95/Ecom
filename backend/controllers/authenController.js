@@ -65,7 +65,7 @@ const authenController = {
                 res.json({...others,accessToken})
             }
         } catch (err) {
-            res.json(err)
+            // res.json(err)
         }
     },
     refreshToken: async(req,res)=>{

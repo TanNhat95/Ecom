@@ -8,6 +8,5 @@ router.post("/register",authenController.registerUser)
 router.post("/user95",authenController.loginUser)
 router.post("/refresh",authenController.refreshToken)
 router.post("/logout",middlewareController.verifyToken,authenController.userLogout)
-router.get('/getall',middlewareController.verifyToken,userController.getAllUser);
 router.delete('/:id',middlewareController.verifyTokeAndAdmin,userController.deleteUser)
 module.exports = router;    
