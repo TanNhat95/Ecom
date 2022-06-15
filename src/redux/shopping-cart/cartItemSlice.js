@@ -95,7 +95,6 @@ export const cartItemsSlice = createSlice({
             // }
               localStorage.setItem('login',JSON.stringify(userName))
               if(JSON.parse(localStorage.getItem(userName))){
-                  console.log(JSON.parse(localStorage.getItem(userName)))
                   state.value = JSON.parse(localStorage.getItem(userName))
               }else
                 state.value = null;

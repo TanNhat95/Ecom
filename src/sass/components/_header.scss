@@ -38,12 +38,15 @@
 
         img{
             height: 28px;
+            @include mobile {
+                height: 16px;
+            }
         }
+
     }
 
     &__menu{
         @include flex(center,space-between);
-        height: 100%;
         font-size: 1.4rem;
         &__item:last-child:hover{
             &__user{
@@ -68,6 +71,12 @@
                 }
                 &-username{
                     font-size: 1.4rem;
+                    width: 100px;
+                    overflow: hidden;
+                    @include mobile{
+                        width: 50px;
+                        overflow: hidden;
+                    }
                 }
 
                 &__control{
@@ -131,7 +140,7 @@
 
         &__right{
             font-size: 2rem;
-
+            line-height: 40px;
             &-item{
                 @include flex(center,center);
             }

@@ -109,14 +109,15 @@ const Header = () => {
             <div className="header__menu__right-item header__menu__item">
               <Link 
                 // onClick={checkLogin}
-                // to={`/${window.location.href.split('/').pop()}`}
-                to={'/'}
+                to={`/${window.location.href.split('/').pop()}`}
                 state={haveLogin}
                 className="header__menu__item__link"
               >
                 {user?<div className="header__menu__item__user">
                   <img src={product_12_image_01} alt="" className='header__menu__item__user-image'/>
-                  <span className='header__menu__item__user-username'>{user.username}</span>
+                  <div className='header__menu__item__user-username'>  
+                    <div>{user.username}</div>
+                  </div>
                 </div>:  <i className="bx bx-user"></i> }       
               </Link>
               {user?
