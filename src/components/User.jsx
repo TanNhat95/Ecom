@@ -158,7 +158,7 @@ const User = props => {
                         <div className="auth-form__group">
                             <Button type='submit'>Login</Button>
                         </div>
-                    </form>
+                    </form> 
             </div>
         </div>}
 

@@ -32,15 +32,16 @@
             }
 
             p{
-                @include flex(center,start);
+                @include flex(center,space-between);
                 font-size: 1.2rem;
                 
             }
             p span{
-                font-size: 1.4rem;
                 color: $main-color;
-                font-weight: 500;
                 margin-left: 1rem;
+                text-align: right;
+                font-size: 1.6rem;
+                font-weight: 600;
             }
 
             &__price{
