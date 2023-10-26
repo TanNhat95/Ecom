@@ -1,29 +1,45 @@
 import React, { useState , useEffect ,useCallback, useRef } from 'react'
 import Title from '../components/Title.jsx'
-import Grid from '../components/Grid.jsx'
-import ProductCard from '../components/ProductCard.jsx'
 import CheckBox from '../components/CheckBox.jsx'
 import Button from '../components/Button.jsx'
 import InfinityList from '../components/InfinityList.jsx'
-
 import productData from '../assets/fake-data/products.js'
-import category from '../assets/fake-data/category.js'
-import productColor from '../assets/fake-data/product-color.js'
-import productSize from '../assets/fake-data/product-size.js'
-const Catalog = () => {
+import axios from 'axios'
+const Catalog =  () => {
+  const [categories, setCategories] = useState([]);
+  const [sizes, setSizes] = useState([])
+  const [colors, setColors] = useState([])
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const [categories, colors, sizes] = await Promise.all([
+          axios.get('http://localhost:8080/api/categories'),
+          axios.get('http://localhost:8080/api/colors'),
+          axios.get('http://localhost:8080/api/sizes')
+        ])
+        setCategories(categories.data)
+        setSizes(sizes.data)
+        setColors(colors.data)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchDetails()
+  }, [])
 
   //initState
   const initFilter = {
-    category: [],
-    color:[],
-    size:[]
+    category: categories,
+    color: colors,
+    size: sizes,
   }
 
   const productList = productData.getAllProducts();
+  const [products,setProducts] = useState(productList);
 
 
   //useState
-  const [products,setProducts] = useState(productList);
 
   const [filter,setFilter] = useState(initFilter);
 
@@ -75,14 +91,14 @@ const Catalog = () => {
     if(filter.color.length>0){
       temp = temp.filter(e=>{
             const check = e.colors.find(color=>filter.color.includes(color))
-            return check!==undefined    
+            return check!==undefined
           })
     }
 
     if(filter.size.length>0){
       temp = temp.filter(e=>{
             const check = e.size.find(size=>filter.size.includes(size))
-            return check!==undefined    
+            return check!==undefined
           })
     }
 
@@ -93,7 +109,7 @@ const Catalog = () => {
   useEffect(() => {
     updateProducts()
   }, [updateProducts])
-  
+
 
   const clearFilter = () =>{
     setFilter(initFilter);
@@ -114,7 +130,7 @@ const Catalog = () => {
             </div>
             <div className="catalog__filter__widget-content">
               {
-                category.map((item,index)=>(
+                categories.map((item,index)=>(
                   <div className='catalog__filter__widget-content-item' key={index}>
                     <CheckBox
                       label={item.display}
@@ -133,7 +149,7 @@ const Catalog = () => {
             </div>
             <div className="catalog__filter__widget-content">
               {
-                productColor.map((item,index)=>(
+                colors.map((item,index)=>(
                   <div className='catalog__filter__widget-content-item' key={index}>
                     <CheckBox
                       label={item.display}
@@ -152,7 +168,7 @@ const Catalog = () => {
             </div>
             <div className="catalog__filter__widget-content">
               {
-                productSize.map((item,index)=>(
+                sizes.map((item,index)=>(
                   <div className='catalog__filter__widget-content-item' key={index}>
                     <CheckBox
                       label={item.display}
@@ -164,7 +180,7 @@ const Catalog = () => {
               }
             </div>
           </div>
-        
+
           <div className="catalog__filter__widget">
             <div className="catalog__filter-content">
               <Button size='sm' onclickMode={clearFilter}>Xóa bộ lọc</Button>
@@ -178,7 +194,7 @@ const Catalog = () => {
 
         <div className="catalog__content">
           <InfinityList
-            data={products} 
+            data={products}
           />
         </div>
       </div>

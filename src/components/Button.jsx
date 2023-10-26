@@ -5,9 +5,10 @@ const Button = props => {
     const bg = props.backgroundColor ? 'bg-' + props.backgroundColor : 'bg-main';
     const size = props.size ? 'button-' + props.size : '';
     const animate = props.animate ? 'button-animate' : ''
+    const disabled = props.disabled ? 'disabled' : ''
   return (
     <button
-        className={`button ${bg} ${size} ${animate}`}
+        className={`button ${disabled} ${bg} ${size} ${animate}`}
         onClick = {props.onclickMode ? () => props.onclickMode() : null}
     >
         <span className='button__txt'>{props.children}</span>
@@ -27,7 +28,8 @@ Button.propTypes = {
     size : PropTypes.string,
     icon : PropTypes.string,
     animate : PropTypes.bool,
-    onclickMode : PropTypes.func
+    onclickMode : PropTypes.func,
+    disabled: PropTypes.bool,
 }
 
 export default Button

@@ -1,9 +1,11 @@
-const userController = require('../controllers/middlewareController.js');
+const userController = require('../controllers/userController');
+const { protect } = require('../middleware/authMiddleware');
 const router = require('express').Router();
-const middlewareController = require('../controllers/middlewareController.js');
 
-
-// router.get('/getall',middlewareController.verifyToken,userController.getAllUser);
-// router.delete('/:id',middlewareController.verifyTokeAndAdmin,userController.deleteUser)
+router.post('/auth', userController.authUser)
+router.post('/', userController.registerUser)
+router.post('/logout', userController.logoutUser)
+router.get('/profile', protect, userController.getUserProfile)
+router.put('/profile', protect, userController.updateUserProfile)
 
 module.exports = router;

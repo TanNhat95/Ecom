@@ -29,7 +29,6 @@ const CartItem = props => {
             dispatch(updateItem({...item,quantity:quantity-1===0 ? 1 : quantity-1}))
         }
     }
-    
     const removeCartItem = () =>{
         dispatch(delItem(item))
     }

@@ -1,5 +1,5 @@
 import React ,{useEffect,useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import productData from '../assets/fake-data/products.js'
@@ -9,20 +9,24 @@ import numberWithCommas from '../changeNum/numberWithCommas.js'
 import Title from '../components/Title.jsx'
 import Button from '../components/Button.jsx'
 import CartItem from '../components/CartItem.jsx'
+import { getItemUser } from '../redux/shopping-cart/cartItemSlice.js'
 
 const Cart = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const cartItems = useSelector((state)=>{
-    return state.cartItems.value
-  })
+  const cartItems = useSelector((state) => state.cartItems.value)
 
   const [cartProducts,setCartProducts] = useState([])
 
   const [totalProducts,setTotalProducts] = useState(0)
 
   const [totalPrice,setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    dispatch(getItemUser())
+  }, [])
 
   useEffect(() => {
     if(cartItems){

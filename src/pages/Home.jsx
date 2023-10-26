@@ -12,16 +12,15 @@ import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getAllUser } from '../redux/apiRequest.js'
+// import { getAllUser } from '../redux/apiRequest.js'
 
 const Home = () => {
 
-  const user = useSelector(state=>state.authen.login?.currentUser);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    getAllUser(user?.accessToken,dispatch);
-  }, [user])
+  // useEffect(() => {
+  //   getAllUser(user?.accessToken,dispatch);
+  // }, [user])
   
   return (
     
@@ -49,7 +48,7 @@ const Home = () => {
             >
               {
                 policy.map((item,index)=>(
-                  <Link to="/policy" key={index}>
+                  <Link to="/" key={index}>
                     <PolicyCard  
                       name={item.name}
                       icon={item.icon}
@@ -160,7 +159,6 @@ const Home = () => {
               >
                 {
                   productData.getProducts(8).map((item,index)=>(
-                    
                     <ProductCard
                       key={index}
                       img01={item.image01}

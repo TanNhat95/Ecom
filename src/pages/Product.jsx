@@ -12,6 +12,7 @@ import productData from '../assets/fake-data/products.js'
 
 const Product = props => {
   let {slug} = useParams();
+
   const product = productData.getProductBySlug(slug);
   const relatedProducts = productData.getProducts(8);
 

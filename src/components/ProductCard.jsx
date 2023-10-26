@@ -22,7 +22,7 @@ const ProductCard = props => {
                 <span className="product-card__price-old">
                     <del>{numberWithCommas("399999")}</del>
                 </span>
-            </div>       
+            </div>
         </Link>
         <div className="product-card__button">
                 <Button

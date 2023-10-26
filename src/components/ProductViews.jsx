@@ -7,8 +7,10 @@ import PropTypes from 'prop-types'
 import Button from './Button.jsx'
 
 import numberWithCommas from '../changeNum/numberWithCommas.js'
+import { toast } from 'react-toastify'
 const ProductViews = props => {
 
+    const { userInfo } = useSelector((state) => state.auth)
     const dispatch = useDispatch();
 
     let product = props.product
@@ -26,14 +28,13 @@ const ProductViews = props => {
     const [color,setColor] = useState(undefined);
     const [size,setSize] = useState(undefined);
     const [quantity,setQuantity] = useState(1);
-    const [infoUser,setInfoUser] = useState(undefined);
-    const user = useSelector(state=>state.authen.login?.currentUser);
+    // const [infoUser,setInfoUser] = useState(undefined);
 
-    const minusQuantiy = () => {
+    const minusQuantity = () => {
         if(quantity!==1)
         setQuantity(quantity-1)
     }
-    const plusQuantiy = () => {
+    const plusQuantity = () => {
         setQuantity(quantity+1)
     }
 
@@ -48,9 +49,9 @@ const ProductViews = props => {
         setPreviewImg(product.image01);
     }, [product])
 
-    useEffect(() => {
-        setInfoUser(user)
-    }, [user])
+    // useEffect(() => {
+    //     setInfoUser(user)
+    // }, [user])
     
     
     const checkCart = () => {
@@ -75,14 +76,15 @@ const ProductViews = props => {
                 quantity: quantity,
                 slug : product.slug,
                 title: product.title,
-                user : infoUser,
             },))
-            alert('Đã thêm vào giỏ hàng')
         }
-        
     }
 
     const goToCart = () => {
+        if(!userInfo) {
+            toast.error('Please login !!!')
+            return
+        }
         if(checkCart()) navigate('/cart')
     }
   return (
@@ -163,7 +165,7 @@ const ProductViews = props => {
                     Số lượng
                 </div>
                 <div className="product__info__item__quantity">
-                    <div className="product__info__item__quantity__button" onClick={()=>minusQuantiy()}>
+                    <div className="product__info__item__quantity__button" onClick={()=>minusQuantity()}>
                         <i className="bx bx-minus"></i>
                     </div>
 
@@ -171,7 +173,7 @@ const ProductViews = props => {
                         {quantity}
                     </div>
 
-                    <div className="product__info__item__quantity__button" onClick={()=>plusQuantiy()}>
+                    <div className="product__info__item__quantity__button" onClick={()=>plusQuantity()}>
                         <i className="bx bx-plus"></i>
                     </div>
                 </div>

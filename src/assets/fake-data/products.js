@@ -1,45 +1,10 @@
-import product_01_image_01 from '../images/products/product-01(1).jpg'
-import product_01_image_02 from '../images/products/product-01(2).jpg'
-
-import product_02_image_01 from '../images/products/product-02(1).jpg'
-import product_02_image_02 from '../images/products/product-02(2).jpg'
-
-import product_03_image_01 from '../images/products/product-03(1).jpg'
-import product_03_image_02 from '../images/products/product-03(2).jpg'
-
-import product_04_image_01 from '../images/products/product-04(1).jpg'
-import product_04_image_02 from '../images/products/product-04(2).jpg'
-
-import product_05_image_01 from '../images/products/product-05(1).jpg'
-import product_05_image_02 from '../images/products/product-05(2).jpg'
-
-import product_06_image_01 from '../images/products/product-06(1).jpg'
-import product_06_image_02 from '../images/products/product-06(2).jpg'
-
-import product_07_image_01 from '../images/products/product-07(1).jpg'
-import product_07_image_02 from '../images/products/product-07(2).jpg'
-
-import product_08_image_01 from '../images/products/product-08(1).jpg'
-import product_08_image_02 from '../images/products/product-08(2).jpg'
-
-import product_09_image_01 from '../images/products/product-09(1).jpg'
-import product_09_image_02 from '../images/products/product-09(2).jpg'
-
-import product_10_image_01 from '../images/products/product-10(1).jpg'
-import product_10_image_02 from '../images/products/product-10(2).jpg'
-
-import product_11_image_01 from '../images/products/product-11(1).jpg'
-import product_11_image_02 from '../images/products/product-11(2).jpg'
-
-import product_12_image_01 from '../images/products/product-12(1).jpg'
-import product_12_image_02 from '../images/products/product-12(2).jpg'
 
 const products = [
     {
         title: "Áo thun Dinosaur 01",
         price: '189000',
-        image01: product_01_image_01,
-        image02: product_01_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-01(1).jpg?alt=media&token=482aac62-a4db-4af1-93a3-2b5bc8e17de0",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-01(2).jpg?alt=media&token=2d13ed64-58d4-4195-a68d-e9c47440cd53",
         categorySlug: "ao-thun",
         colors: ["white", "red", "orange"],
         slug: "ao-thun-dinosaur-01",
@@ -49,8 +14,8 @@ const products = [
     {
         title: "Áo thun Dinosaur 02",
         price: '159000',
-        image01: product_02_image_01,
-        image02: product_02_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-02(1).jpg?alt=media&token=d2884d7a-0648-4ccb-b908-193cc337f3aa",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-02(2).jpg?alt=media&token=734994e1-38c0-419f-8a93-864d0a60f84c",
         categorySlug: "ao-thun",
         colors: ["white", "red", "blue"],
         slug: "ao-thun-dinosaur-02",
@@ -60,8 +25,8 @@ const products = [
     {
         title: "Áo thun Dinosaur 03",
         price: '190000',
-        image01: product_03_image_01,
-        image02: product_03_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-03(1).jpg?alt=media&token=db685826-dbef-4f19-96e2-d889700ed011",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-03(2).jpg?alt=media&token=b49c608a-af97-4fbc-aa35-2cf38f22dc36",
         categorySlug: "ao-thun",
         colors: ["white", "red", "orange", "yellow"],
         slug: "ao-thun-dinosaur-03",
@@ -71,8 +36,8 @@ const products = [
     {
         title: "Áo thun Polo 04",
         price: '194000',
-        image01: product_04_image_01,
-        image02: product_04_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-04(1).jpg?alt=media&token=cae23e0c-9cc3-4fec-bbb8-fc53cac47125",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-04(2).jpg?alt=media&token=272b589c-ebd0-46cb-a651-b501227afd53",
         categorySlug: "ao-thun",
         colors: ["white", "orange", "blue"],
         slug: "ao-thun-polo-04",
@@ -82,8 +47,8 @@ const products = [
     {
         title: "Áo thun Polo 05",
         price: '194000',
-        image01: product_05_image_01,
-        image02: product_05_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-05(1).jpg?alt=media&token=4e67c840-b994-4926-b029-9687e7b7cb70",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-05(2).jpg?alt=media&token=11d57ce1-ed68-40e3-9a18-1237efd9b5ba",
         categorySlug: "ao-thun",
         colors: ["white", "pink"],
         slug: "ao-thun-polo-05",
@@ -93,8 +58,8 @@ const products = [
     {
         title: "Áo thun Polo 06",
         price: '194000',
-        image01: product_06_image_01,
-        image02: product_06_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-06(1).jpg?alt=media&token=ffd92eaa-ce1f-42c9-b526-2b0afa50803b",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-06(2).jpg?alt=media&token=7cca5d5c-eee2-4eac-8103-23a53f03be6f",
         categorySlug: "ao-thun",
         colors: ["black"],
         slug: "ao-thun-polo-06",
@@ -104,8 +69,8 @@ const products = [
     {
         title: "Áo somi caro 07",
         price: '194000',
-        image01: product_07_image_01,
-        image02: product_07_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-07(1).jpg?alt=media&token=874d0bd7-6c26-4e10-a3ca-361ff0170ae6",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-07(2).jpg?alt=media&token=970f192a-fd1f-446c-a7f5-8866591792ba",
         categorySlug: "ao-somi",
         colors: ["white", "red", "orange", "blue"],
         slug: "ao-somi-caro-07",
@@ -115,8 +80,8 @@ const products = [
     {
         title: "Áo somi dài tay 08",
         price: '194000',
-        image01: product_08_image_01,
-        image02: product_08_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-08(1).jpg?alt=media&token=f03c617a-f4c3-48ab-8648-4eaa4cd06bcf",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-08(2).jpg?alt=media&token=78be86cf-9050-4a27-b74a-2ac2285c52c6",
         categorySlug: "ao-somi",
         colors: ["white", "pink","blue"],
         slug: "ao-somi-dai-tay-08",
@@ -126,8 +91,8 @@ const products = [
     {
         title: "Áo somi tay dài 09",
         price: '194000',
-        image01: product_09_image_01,
-        image02: product_09_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-08(2).jpg?alt=media&token=78be86cf-9050-4a27-b74a-2ac2285c52c6",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-09(2).jpg?alt=media&token=0ca0fbfc-184b-4a2e-83cc-620110274e90",
         categorySlug: "ao-somi",
         colors: ["white", "blue"],
         slug: "ao-somi-tay-dai-09",
@@ -137,8 +102,8 @@ const products = [
     {
         title: "Quần jean phong cách 10",
         price: '194000',
-        image01: product_10_image_01,
-        image02: product_10_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-10(1).jpg?alt=media&token=823c8238-a7ca-457d-bfe8-edaa488b766d",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-10(2).jpg?alt=media&token=eeb454d5-ce96-4239-bf33-3272d58fbd08",
         categorySlug: "quan-jean",
         colors: ["blue", "black"],
         slug: "quan-jean-phong-cach-10",
@@ -148,8 +113,8 @@ const products = [
     {
         title: "Quần jean 11",
         price: '194000',
-        image01: product_11_image_01,
-        image02: product_11_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-11(1).jpg?alt=media&token=3eee2ed8-c47f-4feb-8633-8182347a2c9c",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-11(2).jpg?alt=media&token=c81381cf-9bcd-4191-9252-2a0fd7822a71",
         categorySlug: "quan-jean",
         colors: ["blue", "black"],
         slug: "quan-jean-11",
@@ -159,8 +124,8 @@ const products = [
     {
         title: "Quần jean 12",
         price: '194000',
-        image01: product_12_image_01,
-        image02: product_12_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-12(1).jpg?alt=media&token=223c9c0f-dac0-41fa-8aa7-acdfa186b422",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-12(2).jpg?alt=media&token=7ad1f580-1077-462a-b5a0-fbd59c21f494",
         categorySlug: "quan-jean",
         colors: ["blue"],
         slug: "quan-jean-12",
@@ -170,8 +135,8 @@ const products = [
     {
         title: "Áo thun Dinosaur 13",
         price: '189000',
-        image01: product_01_image_01,
-        image02: product_01_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-01(1).jpg?alt=media&token=482aac62-a4db-4af1-93a3-2b5bc8e17de0",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-01(2).jpg?alt=media&token=2d13ed64-58d4-4195-a68d-e9c47440cd53",
         categorySlug: "ao-thun",
         colors: ["white", "red"],
         slug: "ao-thun-dinosaur-13",
@@ -181,8 +146,8 @@ const products = [
     {
         title: "Áo thun Dinosaur 14",
         price: '159000',
-        image01: product_02_image_01,
-        image02: product_02_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-02(1).jpg?alt=media&token=d2884d7a-0648-4ccb-b908-193cc337f3aa",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-02(2).jpg?alt=media&token=734994e1-38c0-419f-8a93-864d0a60f84c",
         categorySlug: "ao-thun",
         colors: ["white", "blue"],
         slug: "ao-thun-dinosaur-14",
@@ -192,8 +157,8 @@ const products = [
     {
         title: "Áo thun Dinosaur 15",
         price: '190000',
-        image01: product_03_image_01,
-        image02: product_03_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-03(1).jpg?alt=media&token=db685826-dbef-4f19-96e2-d889700ed011",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-03(2).jpg?alt=media&token=b49c608a-af97-4fbc-aa35-2cf38f22dc36",
         categorySlug: "ao-thun",
         colors: ["red", "blue"],
         slug: "ao-thun-dinosaur-15",
@@ -203,8 +168,8 @@ const products = [
     {
         title: "Áo somi dài tay 16",
         price: '194000',
-        image01: product_08_image_01,
-        image02: product_08_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-08(1).jpg?alt=media&token=f03c617a-f4c3-48ab-8648-4eaa4cd06bcf",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-08(2).jpg?alt=media&token=78be86cf-9050-4a27-b74a-2ac2285c52c6",
         categorySlug: "ao-somi",
         colors: ["blue", "pink","white"],
         slug: "ao-somi-dai-tay-16",
@@ -214,8 +179,8 @@ const products = [
     {
         title: "Áo somi tay dài 17",
         price: '194000',
-        image01: product_09_image_01,
-        image02: product_09_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-09(1).jpg?alt=media&token=575dbe8e-fc65-4db2-a814-4219c6a595e6",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-09(2).jpg?alt=media&token=0ca0fbfc-184b-4a2e-83cc-620110274e90",
         categorySlug: "ao-somi",
         colors: ["white", "blue"],
         slug: "ao-somi-tay-dai-17",
@@ -225,8 +190,8 @@ const products = [
     {
         title: "Quần jean phong cách 18",
         price: '194000',
-        image01: product_10_image_01,
-        image02: product_10_image_02,
+        image01: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-10(1).jpg?alt=media&token=823c8238-a7ca-457d-bfe8-edaa488b766d",
+        image02: "https://firebasestorage.googleapis.com/v0/b/upload-image-86bc3.appspot.com/o/product-10(2).jpg?alt=media&token=eeb454d5-ce96-4239-bf33-3272d58fbd08",
         categorySlug: "quan-jean",
         colors: ["blue", "black"],
         slug: "quan-jean-phong-cach-18",
