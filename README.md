@@ -10,7 +10,7 @@
  B1 khởi động server : node server/index.js
  B2 run project : npm start
  Hoặc mở trực tiếp website tại: 
- https://react-redux-ecom-v6.herokuapp.com/
+ https://fashion-shop-rose.vercel.app
 - Xem ảnh review
 <img src="image/react-redux-ecom-v6.herokuapp.com1.png" width="800" >
 <h1>Filter sản phẩm </h1>
